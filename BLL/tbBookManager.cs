@@ -12,6 +12,11 @@ namespace BLL
     {
         tbBookService bookService = new tbBookService();
 
+        /// <summary>
+        /// 添加书籍信息
+        /// </summary>
+        /// <param name="book"></param>
+        /// <returns></returns>
         public bool addBook(tbBook book)
         {
             if (bookService.addBook(book) > 0)
