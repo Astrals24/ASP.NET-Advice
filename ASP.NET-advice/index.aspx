@@ -68,7 +68,7 @@
             <asp:View ID="View1" runat="server">
                 ISBN:<asp:TextBox ID="tb_num" runat="server"></asp:TextBox>
                 BookName:<asp:TextBox ID="tb_name" runat="server"></asp:TextBox>
-                <asp:Button ID="Button3" runat="server" Text="确定" OnClick="Button3_Click" />
+                <asp:Button ID="btn_add" runat="server" Text="确定" OnClick="Button3_Click" />
                 <asp:Button ID="Button4" runat="server" Text="取消" />
             </asp:View>
             <asp:View ID="View2" runat="server">

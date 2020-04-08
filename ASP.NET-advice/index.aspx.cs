@@ -7,7 +7,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using Model;
+using BLL;
+using Maticsoft.Common;
 public partial class index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -35,6 +37,7 @@ public partial class index : System.Web.UI.Page
         temp.Add("delete", 1);
         temp.Add("update", 2);
 
+        // 表驱动法
         MultiView1.ActiveViewIndex = (int)temp[radBtn.SelectedValue];
 
         //String key = "select";
@@ -55,34 +58,31 @@ public partial class index : System.Web.UI.Page
     protected void Button3_Click(object sender, EventArgs e)
     {
 
-        //lianjian();
+        tbBook book = new tbBook()
+        {
+            ISBN1 = tb_num.Text.ToString().Trim(),
+            BookName1 = tb_name.Text.ToString().Trim(),
+            Price1 = 0,
+            PublicDate1 = DateTime.Now
+        };
+
+        if (new tbBookManager().addBook(book))
+            MessageBox.Show(this, "添加成功");
+        else
+            MessageBox.Show(this, "添加失败");
+
+
     }
 
-    OleDbServerConn OleDb = new OleDbServerConn();
+   // OleDbServerConn OleDb = new OleDbServerConn();
 
     public void test()
     {
-        //OleDbConnection Conn = new OleDbConnection();
-        //OleDbCommand Comm = new OleDbCommand();
-        //OleDbDataReader dataReader = null;
-
-        //Conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["mycon"].ToString();
-
-        //Conn.Open();
-
-        //Comm.CommandText = "select * from tbBook";
-        //Comm.Connection = Conn;
-        //dataReader = Comm.ExecuteReader();
-
-        GridView1.DataSource = OleDb.DataReaderToDataTable("select * from tbBook");
-            
-            //dataReader;
-        GridView1.DataBind();
-
-    
-
-       // Response.Write(dataReader["ISBN"]);
         
+       // GridView1.DataSource = OleDb.DataReaderToDataTable("select * from tbBook");
+               
+       // GridView1.DataBind();
+      
     }
 
 
