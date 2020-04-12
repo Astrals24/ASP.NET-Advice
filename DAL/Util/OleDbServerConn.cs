@@ -42,7 +42,7 @@ using System.Web.Configuration;
         {
             //string connstr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
             OleDbConnection OleDbConn = new OleDbConnection(connstr);
-            OleDbCommand OleDbComm = new OleDbCommand(strSql, OleDbConn);
+            OleDbCommand OleDbComm = new OleDbCommand(strSql, OleDbConn); 
             OleDbDataReader dataReader = null;
             DataTable dtReturn = null;
             object[] value = null;

@@ -79,8 +79,7 @@ public partial class index : System.Web.UI.Page
     public void test()
     {
         
-       // GridView1.DataSource = OleDb.DataReaderToDataTable("select * from tbBook");
-               
+       // GridView1.DataSource = OleDb.DataReaderToDataTable("select * from tbBook");            
        // GridView1.DataBind();
       
     }
