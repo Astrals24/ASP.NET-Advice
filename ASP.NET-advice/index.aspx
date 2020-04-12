@@ -64,6 +64,24 @@
 
         <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" style="z-index: 1; left: 159px; top: 559px; position: absolute" Text="查询" />
 
+        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataKeyNames="ClassID" DataSourceID="SqlDataSource1" GridLines="None" PageSize="5" style="z-index: 1; left: 331px; top: 539px; position: absolute; height: 115px; width: 199px">
+            <Columns>
+                <asp:BoundField DataField="ClassID" HeaderText="ClassID" ReadOnly="True" SortExpression="ClassID" />
+                <asp:BoundField DataField="GradeId" HeaderText="GradeId" SortExpression="GradeId" />
+                <asp:BoundField DataField="ClassName" HeaderText="ClassName" SortExpression="ClassName" />
+            </Columns>
+            <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
+            <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
+            <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Right" />
+            <RowStyle BackColor="#DEDFDE" ForeColor="Black" />
+            <SelectedRowStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+            <SortedAscendingHeaderStyle BackColor="#594B9C" />
+            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+            <SortedDescendingHeaderStyle BackColor="#33276A" />
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:physique_testConnectionString %>" SelectCommand="SELECT * FROM [tb_class]"></asp:SqlDataSource>
+
         <asp:MultiView ID="MultiView1" runat="server">
             <asp:View ID="View1" runat="server">
                 ISBN:<asp:TextBox ID="tb_num" runat="server"></asp:TextBox>
