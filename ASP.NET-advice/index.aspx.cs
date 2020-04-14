@@ -17,9 +17,16 @@ public partial class index : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-
+            init();
         }
 
+    }
+
+    public void init()
+    {
+        GridView1.DataSource = new OleDbServerConn().DataReaderToDataTable("select * from tbBook");
+
+        GridView1.DataBind();
     }
 
     protected void btn_getBook_Click(object sender, EventArgs e)
@@ -52,11 +59,11 @@ public partial class index : System.Web.UI.Page
         //    case "update": MultiView1.ActiveViewIndex = 2; break;
         //}
 
-
     }
 
     protected void Button3_Click(object sender, EventArgs e)
     {
+       
 
         tbBook book = new tbBook()
         {
@@ -71,10 +78,11 @@ public partial class index : System.Web.UI.Page
         else
             MessageBox.Show(this, "添加失败");
 
+        init();
 
     }
 
-   // OleDbServerConn OleDb = new OleDbServerConn();
+   
 
     public void test()
     {
@@ -89,5 +97,34 @@ public partial class index : System.Web.UI.Page
     protected void Button7_Click(object sender, EventArgs e)
     {
         test();
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        string bookID = ddl_view2.SelectedValue.ToString().Trim();
+        
+        if(new tbBookManager().deleteBook(bookID))
+            MessageBox.Show(this, "删除成功");
+        else
+            MessageBox.Show(this, "删除失败");
+
+        init();
+
+
+
+    }
+
+    protected void Button5_Click(object sender, EventArgs e)
+    {
+        string bookID = ddl_view3.SelectedValue.ToString().Trim();
+        string bookName = ddl_view3.Text.ToString().Trim();
+
+        if (new tbBookManager().updateBook(bookID,bookName))
+            MessageBox.Show(this, "更新成功");
+        else
+            MessageBox.Show(this, "更新失败");
+
+        init();
+
     }
 }

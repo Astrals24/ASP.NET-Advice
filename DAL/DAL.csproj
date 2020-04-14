@@ -45,6 +45,7 @@
     <Compile Include="Util\OleDbServerConn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tbBookService.cs" />
+    <Compile Include="Util\SqlServerConn.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

@@ -27,5 +27,22 @@ namespace BLL
         }
 
 
+        public bool deleteBook(string bookID)
+        {
+            if (bookService.deleteBook(bookID) > 0)
+                return true;
+
+            return false;
+
+        }
+
+        public bool updateBook(string bookID,string bookName)
+        {
+            if (bookService.updateBook(bookID,bookName) > 0)
+                return true;
+
+            return false;
+
+        }
     }
 }

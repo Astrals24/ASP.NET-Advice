@@ -24,6 +24,21 @@ namespace DAL
 
         }
 
+        public int deleteBook(string bookID)
+        {
+            String sql = string.Format("delete from tbBook where ISBN='{0}'",bookID);
+
+            return conn.Excu(sql);
+
+        }
+
+        public int updateBook(string bookID,string bookName)
+        {
+            String sql = string.Format("update from tbBook set BookNamne='{0}' where ISBN='{1}'", bookName,bookID);
+
+            return conn.Excu(sql);
+
+        }
 
     }
 }
