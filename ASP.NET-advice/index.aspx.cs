@@ -117,7 +117,10 @@ public partial class index : System.Web.UI.Page
     protected void Button5_Click(object sender, EventArgs e)
     {
         string bookID = ddl_view3.SelectedValue.ToString().Trim();
-        string bookName = ddl_view3.Text.ToString().Trim();
+        string bookName = view3_tb_name.Text.ToString().Trim();
+
+        MessageBox.Show(this,bookName);
+
 
         if (new tbBookManager().updateBook(bookID,bookName))
             MessageBox.Show(this, "更新成功");
@@ -126,5 +129,11 @@ public partial class index : System.Web.UI.Page
 
         init();
 
+    }
+
+    protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        GridView1.PageIndex = e.NewPageIndex;
+        init();
     }
 }

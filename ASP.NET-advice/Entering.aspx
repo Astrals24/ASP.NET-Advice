@@ -8,18 +8,29 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
 </head>
-<body>
+<body style="background-image:url(images/beijin.jpg)">
     <form runat="server">
         <div class="place">
-      
+            <span>位置</span>
+            <ul class="place">
+                <li ><a href="#">首页</a></li>
+                <li ><a href="#">体侧管理系统</a></li>
+                <li ><a href="#">录入成绩</a></li>
+            </ul>
+
         </div>
         <br>
 
-        <asp:SqlDataSource ID="StudentData" runat="server" ConnectionString="<%$ ConnectionStrings:physique_test %>" SelectCommand="SELECT * FROM [tb_class]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="StudentData" runat="server" ConnectionString="<%$ ConnectionStrings:physique_testConnectionString %>" SelectCommand="SELECT * FROM [tb_class]"></asp:SqlDataSource>
 
         <h4>请选择班级进行录入成绩：</h4>
         <a>年级：</a>
-        
+        <asp:DropDownList ID="ddl_class" runat="server">
+            <asp:listitem value="0">--可选择--</asp:listitem>
+            <asp:listitem value="1">2019</asp:listitem>
+            <asp:listitem value="2">2018</asp:listitem>
+            <asp:listitem value="3">2017</asp:listitem>
+        </asp:DropDownList>
         &nbsp;&nbsp;&nbsp;&nbsp;
 
 
@@ -49,10 +60,13 @@
                             <asp:TextBox ID="Height" Text='<%# Bind("Height") %>' runat="server" Width="50px"></asp:TextBox>
                             厘米
                         </ItemTemplate>
+
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="体重" >
+                    <asp:TemplateField HeaderText="体重"  >
+
+
                         <ItemTemplate>
-                         
+                         <asp:TextBox ID="Height" Text='<%# Bind("Weight") %>' runat="server" Width="50px"></asp:TextBox>
                             公斤
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -77,7 +91,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="坐位体前屈" >
                         <ItemTemplate>
-                         
+                         <asp:TextBox ID="Height" Text='<%# Bind("SitReach") %>' runat="server" Width="50px"></asp:TextBox>
                             厘米
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -110,7 +124,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="右眼视力" >
                         <ItemTemplate>
-                            
+                             <asp:TextBox ID="LeftVision" Text='<%# Bind("RightVision") %>' runat="server" Width="50px"></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="录入" >

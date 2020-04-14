@@ -45,7 +45,7 @@
             <asp:ListItem Value="update">更新</asp:ListItem>
         </asp:RadioButtonList>
         </div>
-        <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" style="z-index: 1; left: 7px; top: 40px; position: absolute; height: 317px; width: 574px" AllowPaging="True" PageSize="4">
+        <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" style="z-index: 1; left: 7px; top: 40px; position: absolute; height: 317px; width: 574px" AllowPaging="True" PageSize="4" OnPageIndexChanging="GridView1_PageIndexChanging">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -79,7 +79,7 @@
             </asp:View>
             <asp:View ID="View3" runat="server">
                 <asp:DropDownList ID="ddl_view3" runat="server" DataSourceID="AccessDataSource1" DataTextField="BookName" DataValueField="ISBN"></asp:DropDownList>
-                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                <asp:TextBox ID="view3_tb_name" runat="server"></asp:TextBox>
                 <asp:Button ID="Button5" runat="server" Text="确定" />
                 <asp:Button ID="Button6" runat="server" Text="取消" />
             </asp:View>
