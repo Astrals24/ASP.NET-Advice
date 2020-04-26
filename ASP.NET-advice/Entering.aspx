@@ -8,7 +8,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
 </head>
-<body style="background-image:url(images/beijin.jpg)">
+<body style="background-image:url(images/beijing.jpg)">
     <form runat="server">
         <div class="place">
             <span>位置</span>
@@ -23,9 +23,11 @@
 
         <asp:SqlDataSource ID="StudentData" runat="server" ConnectionString="<%$ ConnectionStrings:physique_testConnectionString %>" SelectCommand="SELECT * FROM [tb_class]"></asp:SqlDataSource>
 
+        <asp:SqlDataSource ID="SqlGrade" runat="server" ConnectionString="<%$ ConnectionStrings:physique_testConnectionString %>" SelectCommand="SELECT * FROM [tb_grade]"></asp:SqlDataSource>
+
         <h4>请选择班级进行录入成绩：</h4>
         <a>年级：</a>
-        <asp:DropDownList ID="ddl_class" runat="server">
+        <asp:DropDownList ID="ddl_class" runat="server" AutoPostBack="True" DataSourceID="SqlGrade" DataTextField="GradeName" DataValueField="GradeId" OnSelectedIndexChanged="ddl_class_SelectedIndexChanged">
             <asp:listitem value="0">--可选择--</asp:listitem>
             <asp:listitem value="1">2019</asp:listitem>
             <asp:listitem value="2">2018</asp:listitem>
@@ -35,7 +37,8 @@
 
 
 	<a>班级：</a>
-        <asp:DropDownList ID="selectClass" name="selectClass" runat="server" Style="width: 120px" AppendDataBoundItems="True" DataSourceID="StudentData" DataTextField="ClassName" DataValueField="ClassID">
+        <asp:DropDownList ID="selectClass" name="selectClass" runat="server" Style="width: 120px" AppendDataBoundItems="True" AutoPostBack="True">
+            <asp:ListItem Value="0">--请选择--</asp:ListItem>
         </asp:DropDownList>&nbsp;&nbsp;
 
         <asp:Button ID="submitSelect" runat="server" Text="确定" Style="width: 60px" OnClick="submitSelect_Click" />
@@ -43,22 +46,26 @@
         <br>
 
         <div id="tableDiv" >
-            <h1><asp:Label ID="Label1" runat="server" Text="" Style="text-align: center"></asp:Label></h1>
-            <asp:GridView ID="physicalTable" runat="server" CellPadding="4" align="center" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" style="margin-top: 0px" >
+            <h1><asp:Label ID="ClassName" runat="server" Style="text-align: center"></asp:Label></h1>
+            <asp:GridView ID="physicalTable" runat="server" CellPadding="4" align="center" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" style="margin-top: 0px" AllowPaging="True" OnPageIndexChanging="physicalTable_PageIndexChanging" PageSize="8" >
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="StudentId" HeaderText="学生编号" ReadOnly="True" />
                     <asp:BoundField DataField="StudentName" HeaderText="学生姓名" ReadOnly="True" />
                     <asp:TemplateField Visible="false">
                         <ItemTemplate>   
-                            <asp:Label ID="StudentSex" runat="server" Text='<%# Bind("Studentsex") %>' ></asp:Label>
+                            <%--<asp:Label ID="StudentSex" runat="server" Text='<%# Bind("Studentsex") %>' ></asp:Label>--%>
+   
+                          <%--  <asp:TextBox ID="Studentsex" Text='<%# Bind("Studentsex") %>' runat="server" Width="50px"></asp:TextBox>
+                            性别--%>
                         </ItemTemplate>
                     </asp:TemplateField>
 
                     <asp:TemplateField HeaderText="身高">
                         <ItemTemplate>   
                             <asp:TextBox ID="Height" Text='<%# Bind("Height") %>' runat="server" Width="50px"></asp:TextBox>
-                            厘米
+                            厘米<%--<asp:Label ID="StudentSex" runat="server" Text='<%# Bind("Height") %>' ></asp:Label>--%>
+                        
                         </ItemTemplate>
 
                     </asp:TemplateField>
@@ -66,7 +73,7 @@
 
 
                         <ItemTemplate>
-                         <asp:TextBox ID="Height" Text='<%# Bind("Weight") %>' runat="server" Width="50px"></asp:TextBox>
+                         <asp:TextBox ID="Weight" Text='<%# Bind("Weight") %>' runat="server" Width="50px"></asp:TextBox>
                             公斤
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -91,18 +98,20 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="坐位体前屈" >
                         <ItemTemplate>
-                         <asp:TextBox ID="Height" Text='<%# Bind("SitReach") %>' runat="server" Width="50px"></asp:TextBox>
+                         <asp:TextBox ID="SitReach" Text='<%# Bind("SitReach") %>' runat="server" Width="50px"></asp:TextBox>
                             厘米
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="800米跑" >
                         <ItemTemplate>
                             <asp:TextBox ID="Run800" Text='<%# Bind("Run800") %>' runat="server" Width="60px"></asp:TextBox>
+                            秒
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="1000米跑" >
                         <ItemTemplate>
                             <asp:TextBox ID="Run1000" Text='<%# Bind("Run1000") %>' runat="server" Width="60px"></asp:TextBox>
+                            秒
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="仰卧起坐" >
@@ -124,12 +133,12 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="右眼视力" >
                         <ItemTemplate>
-                             <asp:TextBox ID="LeftVision" Text='<%# Bind("RightVision") %>' runat="server" Width="50px"></asp:TextBox>
+                             <asp:TextBox ID="RightVision" Text='<%# Bind("RightVision") %>' runat="server" Width="50px"></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="录入" >
                         <ItemTemplate>
-                            <%--<asp:Button ID="Button1" runat="server" Text="确定" OnClick="Button1_Click" />--%>
+                            <asp:Button ID="Button1" runat="server" Text="确定" OnClick="Button1_Click" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -146,37 +155,7 @@
             </asp:GridView>
         </div>
 
-        <%--<div id="tableDiv" style="display: none">
-            <span id="baocuntishi"></span>
-            <h1 id="classPhysical" style="text-align: center"></h1>
-            <table id="physicalTable" class="altrowstable">
-                <tr>
-                    <th>学生编号</th>
-                    <th>学生姓名</th>
-                    <th>性别</th>
-                    <th>身高</th>
-                    <th>体重</th>
-                    <th>肺活量</th>
-                    <th>50米跑</th>
-                    <th>立定跳远</th>
-                    <th>坐位体前屈</th>
-                    <th>800米跑</th>
-                    <th>1000米跑</th>
-                    <th>仰卧起坐</th>
-                    <th>引体向上</th>
-                    <th>左眼视力</th>
-                    <th>右眼视力</th>
-                    <th>操作</th>
-                </tr>
-
-                <tbody id="physicalTable1">
-                </tbody>
-            </table>
-            <br>
-            <div style="text-align: center">
-                <input id="submit" type="Button" value="提交全部">
-            </div>
-        </div>--%>
+        <%--<asp:Button ID="Button1" runat="server" Text="确定" OnClick="Button1_Click" />--%>
     </form>
 </body>
 </html>
