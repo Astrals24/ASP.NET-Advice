@@ -45,7 +45,7 @@ public class SqlServerConnTest
     {
         //string connstr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         SqlConnection SqlConn = new SqlConnection(connstr);
-        SqlCommand SqlComm = new SqlCommand(strSql, SqlConn);
+        SqlCommand SqlComm = new SqlCommand(strSql, SqlConn); 
         SqlDataReader dataReader = null;
         DataTable dtReturn = null;
         object[] value = null;

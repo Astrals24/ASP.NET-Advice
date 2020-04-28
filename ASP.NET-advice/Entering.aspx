@@ -47,16 +47,16 @@
 
         <div id="tableDiv" >
             <h1><asp:Label ID="ClassName" runat="server" Style="text-align: center"></asp:Label></h1>
-            <asp:GridView ID="physicalTable" runat="server" CellPadding="4" align="center" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" style="margin-top: 0px" AllowPaging="True" OnPageIndexChanging="physicalTable_PageIndexChanging" PageSize="8" >
+            <asp:GridView ID="physicalTable" runat="server" CellPadding="4" align="center" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" style="margin-top: 0px" AllowPaging="True" OnPageIndexChanging="physicalTable_PageIndexChanging" PageSize="8" OnRowDataBound="physicalTable_RowDataBound" >
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="StudentId" HeaderText="学生编号" ReadOnly="True" />
                     <asp:BoundField DataField="StudentName" HeaderText="学生姓名" ReadOnly="True" />
                     <asp:TemplateField Visible="false">
                         <ItemTemplate>   
-                            <%--<asp:Label ID="StudentSex" runat="server" Text='<%# Bind("Studentsex") %>' ></asp:Label>--%>
+                            <asp:Label ID="StudentSex" runat="server" Text='<%# Bind("Studentsex") %>' ></asp:Label>
    
-                          <%--  <asp:TextBox ID="Studentsex" Text='<%# Bind("Studentsex") %>' runat="server" Width="50px"></asp:TextBox>
+                           <%-- <asp:TextBox ID="Studentsex1" Text='<%# Bind("Studentsex") %>' runat="server" Width="50px"></asp:TextBox>
                             性别--%>
                         </ItemTemplate>
                     </asp:TemplateField>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#my img").mouseover(function () {
+
+                $("#my img").not(this).animate({ opacity: 0.2 }, 800);
+
+            }).mouseout(function () {
+
+                $("#my img").animate({ opacity: 1 }, 800);
+
+            });
+               
+            
+
+        });
+    </script>
+</head>
+<body>
+    <div id="my">
+        <img src="images/你的名字_2.jpg" width="500" />
+        <img src="images/你的名字_3.jpg" width="500" />
+        <img src="images/你的名字_4.jpg" width="500" />
+        <img src="images/猫咪_1.jpg" width="500" />
+    </div>
+</body>
+</html>

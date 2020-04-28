@@ -152,4 +152,31 @@ public partial class Entering : System.Web.UI.Page
 
 
     }
+
+    protected void physicalTable_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if(e.Row.RowType == DataControlRowType.DataRow)
+        {
+            if (((Label)e.Row.FindControl("StudentSex")).Text.ToString().Trim().Equals("1"))
+            {
+                ((TextBox)e.Row.FindControl("Run800")).Enabled = false;
+                ((TextBox)e.Row.FindControl("SitUp")).Enabled = false;
+            }
+            else
+            {
+                ((TextBox)e.Row.FindControl("Run1000")).Enabled = false;
+                ((TextBox)e.Row.FindControl("PullUp")).Enabled = false;
+            }
+
+            string[] arr = {"Height","Weight","LungVolume",  "Run50","StandJump" ,"SitReach","Run800Run1000" ,"SitUp" ,"PullUp" ,"LeftVision","RightVision" };
+
+            foreach(string name in arr)
+            {
+                if (!((TextBox)e.Row.FindControl(name.ToString())).Text.ToString().Trim().Equals(""))
+                {
+                    ((TextBox)e.Row.FindControl(name.ToString())).Enabled = false;
+                }
+            }
+        }
+    }
 }

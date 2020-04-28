@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>测试</title>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn_out").click(function () {
+                $("#id_div_fade").fadeOut(3000);
+            });
+
+            $("#btn_in").click(function () {
+                $("#id_div_fade").fadeIn(3000);
+            });
+
+            $("#id_div_fade").mouseenter(function () {
+                //$("p").css("background-color", "#FFB6C1");
+                //如果想每一行诗句变成不同的背景色，怎么实现 ？
+
+                //$("p")[1].css("background-color", "#FFB6C2");
+                //for (var i = 0; i < 5; ++i) {
+                //    $("#id_div_fade").children().eq(i).css("background-color", "#FFB6C" + i.toString());
+                //}
+
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <button id="btn_out">淡出效果</button>
+    <button id="btn_in">淡入效果</button> 
+
+    <div id="id_div_fade">
+        <!--<p>绝句</p>
+        <p>两个黄鹂鸣翠柳</p>
+        <p>一行白鹭上青天</p>
+        <p>窗含西岭千秋雪</p>
+        <p>门泊东吴万里船</p>-->
+
+        <p>木兰词-拟古决绝词柬友</p>
+        <p id="one">人生若只如初见</p>
+        <p>何事秋风悲画扇</p>
+        <p>等闲变却故人心</p>
+        <p>却道故人心易变</p>
+        <p>......</p>
+
+    </div>
+</body>
+</html>
