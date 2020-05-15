@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script>
+        function searchCity() {    //按钮点击后 响应的客户端代码
+            var p = $("#province").val();  //取得控件的值
+            var c = $("#city").val();  //取得控件的值
+            $("#msg").html("省份:" + p + " 城市:" + c);
+            var s = "province=" + escape(p) + "&city=" + escape(c);
+           
+            //传参表达式
+            console.log(s);
+            frm.window.location.href = "homework2.ashx?" + s;
+            //传参并调用服务器端，查库
+        }
+    </script>
+</head>
+<body>
+    省份<input type="text" id="province" value="" style="width:50px" />
+    城市<input type="text" id="city" value="" style="width:50px" />
+    <input type="button" value="查看" onclick="searchCity()" />
+    <span id="msg"></span>
+    <iframe name="frm" id="frm" src="" style="width:400px;height:150px"></iframe>
+</body>
+</html>

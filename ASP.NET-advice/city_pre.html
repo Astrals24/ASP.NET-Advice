@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jquery-1.9.1.min.js"></script>
+        <style>
+            body {
+                background-color: black;
+            }
+
+            h1 {
+                margin-left: 100px;
+                font-size: 36px;
+                color: gold;
+            }
+
+            #title {
+                border-bottom: 2px solid gold;
+            }
+
+            #pic {
+                position: relative;
+                left: 600px;
+                top: 100px;
+                width: 630px;
+                height: 430px;
+            }
+
+            img {
+                width: 200px;
+                height: 200px;
+                margin: 2px;
+                float: left;
+            }
+
+            .showpic {
+                display: none;
+                position: absolute;
+                margin: 0;
+            }
+
+                .showpic > img {
+                    width: 400px;
+                    height: 400px;
+                }
+
+                .showpic > font {
+                    display: block;
+                    color: yellow;
+                }
+
+            #recommend {
+                position: absolute;
+                margin-left: 100px;
+                top: 100px;
+                width: 300px;
+                border: 1px solid gold;
+                color: gold;
+            }
+
+                #recommend > p {
+                    font-size: 20px;
+                }
+
+            #find {
+                position: absolute;
+                left: 100px;
+            }
+        </style>
+		<script>
+			$(document).ready(function() {
+				$("#pic > img").hover(function(event) {
+					var x = event.pageX;
+					var y = event.pageY;
+					var path = $(this).attr("src");
+					var name = $(this).attr("alt");
+					$("#spic").css("left", x).css("top", y).show().children("img").attr("src", path);
+					$("#spic").children("font").text(name);
+				});
+				$("#pic > img").mouseout(function() {
+					$("#spic").hide();
+                });
+
+                $("h2").click(function () {
+                    $(this).nextAll("p").slideToggle("fast")
+                })
+
+			});
+		</script>
+	</head>
+	<body>
+		<div id="title">
+			<h1>绿茵阁西餐厅</h1>
+		</div>
+		<div id="pic">
+			<img src="img/sample4.jpg" alt="餐品1" />
+			<img src="img/sample8.jpg" alt="餐品2" />
+			<img src="img/sample9.jpg" alt="餐品3" />
+			<img src="img/sample6.jpg" alt="餐品4" />
+			<img src="img/sample10.jpg" alt="餐品5" />
+			<img src="img/sample1.jpg" alt="餐品6" />
+		</div>
+		<div id="spic" class="showpic">
+			<img src="" alt="显示预览图片" />
+			<font></font>
+		</div>
+		<div id="recommend">
+			<h2>推荐餐品</h2>
+			<p id="one">雪花牛排</p>
+			<p>香煎火腿汉堡</p>
+			<p>香煎火腿汉堡</p>
+			<p>香煎火腿汉堡</p>
+			<p>香煎火腿汉堡</p>
+
+		</div>
+	</body>
+</html>
