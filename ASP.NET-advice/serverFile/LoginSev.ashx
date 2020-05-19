@@ -15,7 +15,7 @@ public class LoginSev : IHttpHandler {
         string msg = "";
         userDao.loginConfirm(name,pwd,out msg);
 
-        context.Response.Write(name);
+        context.Response.Write(msg);
 
 
 

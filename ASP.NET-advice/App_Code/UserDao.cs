@@ -11,6 +11,9 @@ using System.Web;
 public class UserDao
 {
     private OleDbServerConn conn = new OleDbServerConn();
+
+    public DataTable DataTable { get; private set; }
+
     //
     // TODO: 在此处添加构造函数逻辑
     //     
@@ -27,10 +30,12 @@ public class UserDao
         //执行sql语句，反馈信息       
         string sql = string.Format("select * from xixi.user where Uname = '{0}' and Upassword = '{1}'", name, pwd);
 
+        DataTable table= conn.DataReaderToDataTable(sql);
+        
 
-        if (conn.DataReaderToDataTable(sql) == null)
+        if (table != null)
         {
-            msg = name + "-登录成功!";
+            msg = table.Rows[0]["ID"].ToString();
 
         }
         else
