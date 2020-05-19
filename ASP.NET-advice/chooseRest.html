@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+
+        body {
+            font: 62.5% "trebuchet ms", sans-serif;
+            margin: 64px;
+            background-color: silver;
+        }
+
+        #h2-caption {
+            font: 20px "trebuchet ms", sans-serif;
+        }
+
+        p {
+            font: 13.5px "trebuchet ms", sans-serif;
+            color: oldlace;
+            font-size: x-large;
+        }
+
+        #div-log {
+            font: 13.5px "trebuchet ms", sans-serif;
+        }
+	
+    </style>
+
+    <script>
+        $(function () {
+            $("table tr>td").bind("click", function () {
+                $("#div-log").html($("#div-log").html() + "<p>已订位的桌号:" + $(this).html() + "</p>");
+                $(this).css("visibility", "hidden");               
+            })
+                
+
+        })
+
+
+    </script >
+</head>
+<body>
+    <h2 id="h2-caption">请点击，选择就餐的区域</h2>
+    <hr>
+    <br />
+    <table style="color: cornflowerblue;font-size: xx-large;">
+        <tr>
+            <td>一楼 桌号：B11</td>
+            <td>一楼 桌号：B12</td>
+            <td>一楼 桌号：B13</td>
+            <td>一楼 桌号：C11</td>
+            <td>一楼 桌号：C12</td>
+            <td>一楼 桌号：C13</td>
+        </tr>
+        <tr>
+            <td>二楼 桌号：A2VIP</td>
+            <td>二楼 桌号：A21</td>
+            <td>二楼 桌号：A22</td>
+            <td>二楼 桌号：A23</td>
+        </tr>
+        <tr>
+            <td>三楼 桌号：B3VIP</td>
+            <td>三楼 桌号：B31</td>
+            <td>三楼 桌号：B32</td>
+            <td>三楼 桌号：B33</td>
+            <td>三楼 桌号：C34</td>
+            <td>三楼 桌号：C35</td>
+        </tr>
+    </table>
+    <br />
+    <hr />
+    <div id="div-log">
+        <p>已就餐桌号：</p>
+    </div>
+</body>
+</html>

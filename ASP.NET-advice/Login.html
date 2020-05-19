@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="css/LoginStyle.css">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/myLogin.js"></script>
+</head>
+<body>
+    <h1>欢迎光临本餐厅</h1>
+    <div class="login-form">
+        <div class="close"></div>
+        <div class="head-info">
+            <label class="lbl-1"></label>
+            <label class="lbl-2"></label>
+            <label class="lbl-3"></label>
+        </div>
+        <div class="avtar">
+            <img src="images/avtar.png">
+        </div>
+
+        <form id="login">
+            <input type="text" id="name" class="text" name="username"/>
+            <div class="key">
+             <input type="password" id="psw" name="userpsw" value=""/>
+            </div>
+            <a href="" style="color:limegreen">新用户注册</a>
+            <div class="singin">
+                <input type="button" id="loginbtn" value="登录" onclick="login_btn()">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
