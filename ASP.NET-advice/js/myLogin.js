@@ -1,7 +1,7 @@
 ﻿function login_btn() {
     var username = $("#name").val();
     var userpwd = $("#psw").val();
-    //alert(username);
+    alert(username);
     if (username == "" || userpwd == "")
         alert("用户名或密码不能为空！");
 
@@ -17,12 +17,5 @@
             else
                 alert(data+"-登录成功!");
         }
-
-
-
         })
-
-
-
-    
 }

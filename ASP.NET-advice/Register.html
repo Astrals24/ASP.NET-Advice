@@ -3,8 +3,102 @@
 <head>
     <meta charset="utf-8" />
     <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="css/home.css" />
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/myRegister.js"></script>
+    <script>
+        function register() {
+            var name = $("#rg_name").val();
+            var pwd = $("#rg_pwd").val();
+            var sex = $("#rg_sex").val();
+            var address = $("#rg_adress").val();
+            var phone = $("#rg_phone").val();
+
+            if (name == "" || pwd == "" || sex == "" || adress == "")
+                alert("不能为空");
+            else {
+                $.ajax({
+                    url: "serverFile/RegisterSev.ashx",
+                    method: "get",
+                    data: { "uname": name, "upwd": pwd, "uphone": phone, "usex": sex, "uadress": address },
+                    error: function (request) {
+                        alert("DB 连接失败!")
+                    },
+                    success: function (data) {
+                        alert(data);
+                        if (data == name + "注册成功")
+                            window.location.href = "Login.html";
+                        else
+                            alert(data);
+
+                    }
+
+                })
+
+
+            }
+
+        }
+    </script>
 </head>
-<body>
+<body class="wrap">
+    <div class="banner-show" id="ban_content">
+        <div class="cell bns-01">
+            <div class="con"></div>
+        </div>
+        <div class="cell bns-02">
+            <div class="con"></div>
+        </div>
+        <div class="cell bns-03">
+            <div class="con"></div>
+        </div>
+    </div>
+
+    <div class="banner-control" id="ban_button">
+        <a class="left">左</a>
+        <a class="right">右</a>
+    </div>
+
+    <div class="container">
+        <div class="register-box">
+            <div class="reg-form">
+                <br />
+                <form id="reg">
+                    用户名
+                    <div class="cell">
+                        <input type="text" name="name" id="rg_name" class="text" />
+                    </div>
+                    密码
+                    <div class="cell">
+                        <input type="password" name="pwd" id="rg_pwd" class="text" />
+                    </div>
+                    电话
+                    <div class="cell">
+                        <input type="text" name="phone" id="rg_phone" class="text" style="width:140px" />
+                    </div>
+                    性别
+                    <select style="width:40px;float:left;" name="sex" id="rg_sex">
+                        <option selected="selected">男</option>
+                        <option>女</option>
+                    </select>
+                    <br />
+                    地址
+                    <div class="cell">
+                        <textarea id="rg_address" name="addree" style="width:240px;height:40px"></textarea>
+                    </div>
+                </form>
+                </div>
+                <div class="bottom">
+                    <a class="button btn-green" onclick="register()">立即注册</a>
+                </div>
+
+
+            </div>
+
+
+    </div>
+
+
 
 </body>
 </html>

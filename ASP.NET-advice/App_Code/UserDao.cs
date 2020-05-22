@@ -21,14 +21,8 @@ public class UserDao
     {
 
         msg = "";
-        //where Uname = '{0}' and Upassword = '{1}
-        //String sql = string.Format("select * from xixi.user");
-
-        //var conn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\GithubProject\ASP.NET-advice\ASP.NET-advice\DB\xixi.mdb");
-        //conn.Open();
-
         //执行sql语句，反馈信息       
-        string sql = string.Format("select * from xixi.user where Uname = '{0}' and Upassword = '{1}'", name, pwd);
+        string sql = string.Format("select * from [user] where Uname = '{0}' and Upassword = '{1}'", name, pwd);
 
         DataTable table= conn.DataReaderToDataTable(sql);
         
@@ -42,23 +36,20 @@ public class UserDao
         {
             msg = "用户名或密码错误!";
         }
-        //var reader = new OleDbCommand(sql, conn).ExecuteReader();
-
-        //通过context.Response向客户端输出结果
-        //while (reader.Read())
-        //{
-        //    if (reader["Uname"].ToString() == name)
-        //        msg = reader["Uname"].ToString() + "-登录成功!";
-        //    else
-        //        msg = "用户名或密码错误!";
-        //}
+    }
 
 
+    public void RegisterConfirm(RegisteMod registe,out string msg)
+    {
+        msg = "";
+        string sql = string.Format("insert into [user](Uname,Upassword,Uemail,Usex,Uaddress,lei) values('{0}','{1}','{2}','{3}','{4}','{5}')",registe.Name,registe.Pwd,registe.Phone,registe.Sex,registe.Adress,1);
 
-
-
-
-
+        if (conn.Excu(sql) > 0)
+        {
+            msg = "注册成功";
+        }
+        else
+            msg = "注册失败";
     }
 
 

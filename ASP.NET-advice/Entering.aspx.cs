@@ -168,11 +168,11 @@ public partial class Entering : System.Web.UI.Page
                 ((TextBox)e.Row.FindControl("PullUp")).Enabled = false;
             }
 
-            string[] arr = {"Height","Weight","LungVolume",  "Run50","StandJump" ,"SitReach","Run800Run1000" ,"SitUp" ,"PullUp" ,"LeftVision","RightVision" };
+            string[] arr = {"Height","Weight","LungVolume",  "Run50","StandJump" ,"SitReach","Run800","Run1000" ,"SitUp" ,"PullUp" ,"LeftVision","RightVision" };
 
             foreach(string name in arr)
             {
-                if (!((TextBox)e.Row.FindControl(name.ToString())).Text.ToString().Trim().Equals(""))
+                if (!((TextBox)e.Row.FindControl(name.ToString())).Text.ToString().Trim().Equals("") && !((TextBox)e.Row.FindControl(name.ToString())).Text.ToString().Trim().Equals("0.0") && !((TextBox)e.Row.FindControl(name.ToString())).Text.ToString().Trim().Equals("00:00:00")&& !((TextBox)e.Row.FindControl(name.ToString())).Text.ToString().Trim().Equals("0.00") && !((TextBox)e.Row.FindControl(name.ToString())).Text.ToString().Trim().Equals("0"))
                 {
                     ((TextBox)e.Row.FindControl(name.ToString())).Enabled = false;
                 }
