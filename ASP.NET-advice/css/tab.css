@@ -1,0 +1,40 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.tab{
+	width:360px;
+	height: 280px;
+	border:1px solid #ccc;
+	margin: 50px auto;
+}
+.tab .hd{
+	height:30px;
+	width:360px;
+}
+.tab .hd span{
+	float: left;
+	width:119px;
+	height:29px;
+	text-align: center;
+	line-height: 30px;
+	border-right:1px solid #eee;
+	border-bottom:1px solid #eee;
+}
+.tab .hd span.last{
+	width:120px;
+	border-right: none;
+}
+.tab .hd span.cur{
+	border-bottom: 1px solid red;
+}
+.bd{
+	padding-top: 10px;
+}
+
+.bd .column img{
+	width:360px;
+}
+
+
+ 

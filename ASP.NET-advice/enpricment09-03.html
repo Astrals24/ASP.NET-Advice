@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="css/tab.css" />
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <style>
+        .bd .column {
+            display: none;
+        }
+
+        .bd .column.cur {
+            display: block;
+        }
+
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            tabIt("myTab1");
+
+            function tabIt(id) {
+             
+                var $tab = $("#" + id);
+                var $hd_spans = $tab.find(".hd span");
+                var $hd_column = $tab.find(".bd .column");
+               
+                var idx = 0;
+
+                $hd_spans.mouseover(function () {
+                    idx = $(this).index();
+                    //alert(idx);
+                    $hd_column.eq(idx).addClass("cur").siblings().removeClass("cur");
+                    $hd_spans.eq(idx).addClass("cur").siblings().removeClass("cur");
+
+                })
+
+            }
+
+        })
+
+    </script>
+</head>
+
+<body>
+    <div class="tab" id="myTab1">
+        <div class="hd">
+            <span class="cur">tab0</span>
+            <span>tab1</span>
+            <span class="last">tab2</span>
+        </div>
+
+        <div class="bd">
+            <div class="column cur">
+                <img src="images/0.jpg" />
+            </div>
+            <div class="column">
+                <img src="images/1.jpg" />
+            </div>
+            <div class="column">
+                <img src="images/2.jpg" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

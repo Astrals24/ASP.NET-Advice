@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        .accordion{
+            width:600px;
+            border:1px solid #ccc;
+            margin:100px auto;
+        }
+        img{
+                width: 600px;
+        }
+        .accordion ul li h3{
+            line-height:40px;
+            border-bottom:1px solid #ccc;
+            color:#999;
+            position:relative;
+        }
+        .accordion ul li h3 span{
+            position:absolute;
+            right:10px;
+            top:0;
+        }
+        .accordion ul{
+            list-style:none;
+        }
+        .accordion ul li .info{
+            display:none;
+        }
+     
+       
+        body{
+            background-color:silver;
+
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $("h3").click(function () {
+                // siblings() 方法返回被选元素的所有同级元素。
+                if ($(this).siblings(".info").is(":visible")) {
+                    $(".info").slideUp();
+                    $("h3 span").html(">");
+                }// 如果自己的兄弟不可见，就让自己的兄弟展开
+                else {
+                    //slideUp以滑动方式隐藏 ? 元素
+                    $(".info").slideUp();
+                    $("h3 span").html(">");
+                    // 自己的兄弟展开
+                    $(this).siblings(".info").slideDown();
+                    // span 变为
+                    $(this).children("span").html("↓");
+
+                }
+
+            })
+
+
+        })
+       
+    </script>
+</head>
+      
+<body>
+    <div class="accordion">
+        <ul>
+            <li>
+                <h3>大佛<span></span></h3>
+                <div class="info">
+                    <img src="http://img.redocn.com/sheji/20160203/jinsefozufoguangpuzhaobeijingshipin_5852870.jpg" />
+                </div>
+            </li>
+
+            <li>
+                <h3>佛光<span></span></h3>
+                <div class="info">
+                    <img src="http://www.tanmizhi.com/img/allimg/04/17-1P4131P237.png" />
+                </div>
+            </li>
+
+            <li>
+                <h3>这就是标题<span></span></h3>
+                <div class="info">
+                    <img src="" />
+                </div>
+            </li>
+
+            <li>
+                <h3>这就是标题<span></span></h3>
+                <div class="info">
+                    <img src="" />
+                </div>
+            </li>
+
+            <li>
+                <h3>这就是标题<span></span></h3>
+                <div class="info">
+                    <img src="" />
+                </div>
+            </li>
+
+            <li>
+                <h3>这就是标题<span></span></h3>
+                <div class="info">
+                    <img src="" />
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
