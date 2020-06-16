@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #eee;
+        }
+
+        .accordion {
+            width: 900px;
+            height: 300px;
+            border: 1px solid black;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .accordion ul {
+                list-style: none;
+            }
+
+                .accordion ul li {
+                    position: absolute;
+                }
+
+        .no0 {
+            left: 0;
+        }
+
+        .no1 {
+            left: 180px;
+        }
+
+        .no2 {
+            left: 360px;
+        }
+
+        .no3 {
+            left: 540px;
+        }
+
+        .no4 {
+            left: 720px;
+        }
+
+        .mask {
+            position: absolute;
+            width: 560px;
+            height: 300px;
+            background-color: black;
+            top: 0;
+            left: 0;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="accordion">
+        <ul>
+            <li class="no0">
+                <div class="mask"></div>
+                <a href=""><img src="images/奥运会/0.jpg" alt="" /></a>
+            </li>
+            <li class="no1">
+                <div class="mask"></div>
+                <a href=""><img src="images/奥运会/1.jpg" alt="" /></a>
+            </li>
+            <li class="no2">
+                <div class="mask"></div>
+                <a href=""><img src="images/奥运会/2.jpg" alt="" /></a>
+            </li>
+            <li class="no3">
+                <div class="mask"></div>
+                <a href=""><img src="images/奥运会/3.jpg" alt="" /></a>
+            </li>
+            <li class="no4">
+                <div class="mask"></div>
+                <a href=""><img src="images/奥运会/4.jpg" alt="" /></a>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var speed = 400;
+        $(".accordion ul li").mouseenter(function () {
+            var idx = $(this).index();
+
+            /*小于等于这li的元素 应该左边跑 跑到自己序号的85倍
+                麻烦的是 JQuery只要小于等于这个概念 只有it就是小于
+                小于等于9  == 小于10  所以idx+1
+            */
+            $(".accordion ul li:lt(" + (idx + 1) + ")").each(function (i) {
+                $(this).stop(true).animate({
+                    "left": 85 * i
+                }, speed);
+
+            })
+
+            $(".accordion ul li:gt(" + idx + ")").each(function (i) {
+                $(this).stop(true).animate({
+                    "left": 560+85 * (idx+i)
+                }, speed);
+
+            })
+
+            // 自己碰到的元素变量 其他元素变暗
+            $(this).children(".mask").stop(true).fadeOut();
+            $(this).siblings().children(".mask").stop(true).fadeIn();
+
+
+            
+
+        })
+        // 当鼠标离开大盒子时 所有图片归为
+        $(".accordion").mouseleave(function () {
+            $(".accordion ul li").each(function (i) {
+                $(this).stop(true).animate({
+                    "left": 180 * i
+                }, speed);
+
+            })
+            $(".mask").fadeIn();
+
+
+        })
+
+    </script>
+</body>
+</html>

@@ -14,8 +14,13 @@
             console.log(data);
             if (data == "用户名或密码错误!")
                 alert(data);
-            else
-                alert(data+"-登录成功!");
+            else {
+                //alert(data + "-登录成功!");
+                $.session.set('name', name);
+                $.session.set('uid', data);
+                alert("!!!!!!!!!!!!!!");
+                window.location.href = "OrdingPage订餐页面.html";
+            }
         }
         })
 }

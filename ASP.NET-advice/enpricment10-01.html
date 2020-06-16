@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.quoterotator.min.js"></script>
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-image: url(images/pic2.jpg);
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+
+        p, .a1 {
+            font-family: STXinwei;
+            font-size: 36px;
+            font-weight: 100;
+            font-style: italic;
+            color: darkgreen;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#words").quoteRotator();
+        })
+
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <h2>实现文字动画效果</h2>
+        <div id="words">
+            <ul class="word-container">
+                <li data-author="--- Abraham Lincoln(1809 - 1865), (attributed)">
+                    when I do good, I feel good;
+                    when I do bad , I feel bad, and that is my religion.
+                    </li>
+                <li data-author="" data-easeout="fadeOutDown">
+                    The animation can be in random or pre-defined in the HTML.
+                    Next quote animation will be all in fadeInDown.
+                    Optional click to next quote and hover to pause the slideshow.
+                    </li>
+                <li data-author="Mark Twain (1835 - 1910)" data-easein="fadeInDown">
+                    Always do right.
+                    This will gratify some people and astonish the rest.
+                    </li>
+                <li data-author="---  Susan Rice, Stanford University Commencement, 2010" data-easeout="bounceOut">
+                    Progress is the product of human agency.
+                    Things get better because we make them better.
+                    Things go wrong when we get too comfortable,
+                    when we fail to take risks or seize opportunities.
+                    </li>
+            </ul>
+            <div class="quote">
+                <blockquote>
+                <p class="quote-content"></p>
+                </blockquote>
+                <cite class="quote-author"></cite>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html> 
+<head>
+    <meta charset="UTF-8" />
+    <title>订单</title>
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jQuerysession.js"></script>
+
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="js/MaskAnderPrice.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            
+
+            $("#pX").click(function () {
+                $("#mask").hide();
+            });
+
+            $("#goods").click(function () {
+
+                console.log($("#goodnet ul li").val());
+
+
+            })
+        })
+    </script>
+</head> 
+ <body>
+  <!--==============================header=================================--> 
+  <header> 
+   <div class="row-top"> 
+    <div class="main"> 
+     <div class="wrapper"> 
+      <h1><a href="index.html">绿茵阁<span>网上订餐</span></a></h1> 
+      <nav> 
+       <ul class="menu"> 
+        <li><a href="index.html">首页</a></li> 
+        <li><a href="center.html">个人</a></li> 
+        <li><a class="active" href="ordering.html">订餐</a></li> 
+        <li><a href="feedback.html">问题</a></li> 
+        <li><a id="deng" href="Login.html">登陆|注册</a></li> 
+       </ul> 
+      </nav> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="row-bot"> 
+    <div class="row-bot-bg"> 
+     <div class="main"> 
+      <h2>选择菜品<span>订餐</span></h2> 
+     </div> 
+    </div> 
+   </div> 
+  </header> 
+  <!--==============================content================================--> 
+  <section id="content"> 
+      <div>
+          <div class="main">
+              <!--左侧菜单开始-->
+              <div class="caidan">
+                  <ul>
+                      <li><a>菜品类型</a></li>
+                      <li class="on" onclick="showMenue('1')"><a>头盘</a></li>
+                      <li><a onclick="showMenue('2')">汤类</a></li>
+                      <li><a onclick="showMenue('3')">主菜</a></li>
+                      <li><a onclick="showMenue('4')">甜品</a></li>
+                      <li><a onclick="showMenue('5')">酒类</a></li>
+                      <li><a onclick="showMenue('6')">咖啡</a></li>
+                      <li><a onclick="showMenue('7')">茶类</a></li>
+                      <li></li>
+                      <li></li>
+                  </ul>
+                  <div class="hover"></div>
+              </div>
+              <!--左侧菜单结束-->
+              <!--商品展示开始-->
+              <div id="goods">
+                  <!--单个食物开始-->
+                  <div id="goodlist">
+                      <div id="goodtu">
+                          <img id="goodtu001" src="images/page2-img10.jpg" alt="这是一份好吃的牛排" />
+                      </div>
+                      <div id="jiacai">
+                          <img src="images/magnify.png" />
+                      </div>
+                      <div id="goodnei">
+                          <ul>
+                              <li><span id="goodsName001">牛排</span></li>
+                              <li><span id="goodsPrice001">123.76</span>元/份<a onclick="showMask('001')">详情&gt;&gt;</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <!--单个食物结束-->
+                  <!--单个食物开始-->
+                  <div id="goodlist">
+                      <div id="goodtu">
+                          <img id="goodtu002" src="images/page2-img1.jpg" alt="好吃需要二等分" />
+                      </div>
+                      <div id="jiacai">
+                          <img src="images/magnify.png" />
+                      </div>
+                      <div id="goodnei">
+                          <ul>
+                              <li><span id="goodsName002">风味薯丝</span></li>
+                              <li><span id="goodsPrice002">233.67</span>元/份<a onclick="showMask('002')">详情&gt;&gt;</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <!--单个食物结束-->
+                  <!--单个食物开始-->
+                  <div id="goodlist">
+                      <div id="goodtu">
+                          <img id="goodtu003" src="images/page2-img3.jpg" alt="值得购买啦啦啦" />
+                      </div>
+                      <div id="jiacai" onclick="jiadan('003')">
+                          <img src="images/magnify.png" />
+                      </div>
+                      <div id="goodnei">
+                          <ul>
+                              <li><span id="goodsName003">寿司</span></li>
+                              <li><span id="goodsPrice003">100.00</span>元/份<a onclick="showMask('003')">详情&gt;&gt;</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <!--单个食物结束-->
+              </div>
+              <!--商品展示结束-->
+              <!--订单开始-->
+              <div id="dingdan">
+                  <div class="dingdan">
+                      <div class="dingdan-title">
+                          我的订单
+                          <span id="allnum">0</span>
+                      </div>
+                      <div style="min-height: 200px; overflow: auto;">
+                          <form id="dan" action="">
+                              <table border="0" class="right-list" id="myGoods">
+                                  <tbody>
+                                      <tr>
+                                          <td style="display:none;">id</td>
+                                          <td width="80" align="center" class="dingtou"><span class="STYLE6" name="dede">品名</span></td>
+                                          <td width="9" class="dingtou"></td>
+                                          <td width="48" align="center" class="dingtou"><span class="STYLE6">数量</span></td>
+                                          <td width="9" class="dingtou"></td>
+                                          <td width="48" align="center" class="dingtou"><span class="STYLE6">价格</span></td>
+                                          <td align="center" bgcolor="#f15a00"><span class="STYLE6">取消</span></td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </form>
+                      </div>
+                      <div class="xiaoji">
+                          商品小计：
+                          <span id="goods_price">0.00</span>元
+                      </div>
+
+                      <div class="qingkong">
+                          <div class="qk">
+                              全部清空
+                          </div>
+                          <div class="xiayibu">
+                              去结算
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!--订单结束-->
+              <!--订单详情开始-->
+              <!--订单详情结束-->
+          </div>
+      </div> 
+  </section> 
+  <!--菜品详情开始--> 
+  <!--遮罩开始--> 
+  <div id="mask" class="mask"> 
+   <!--详情--> 
+   <div id="xiangcai"> 
+    <div id="tou"> 
+     <p class="xiangti">菜品详情</p> 
+     <p id="pX" >X</p> 
+    </div> 
+    <div id="xianghan"> 
+     <div id="image"> 
+      <img id="xiangtu" /> 
+     </div> 
+     <div id="xiang"> 
+      <p id="foodname"></p> 
+      <p id="foodprice"></p> 
+      <p id="foodinfo"></p> 
+     </div> 
+    </div> 
+   </div> 
+   <!--订单--> 
+   <div id="danti"> 
+    <div id="dingtou"> 
+     <p class="dingxiang">订单详情</p> 
+     <p id="dpX" >X</p> 
+    </div> 
+    <div id="xianghan">
+      名称:
+     <span id="name">dd</span>
+     <br /> 联系:
+     <span id="phone">1246788999</span>
+     <br /> 地址:
+     <span id="address">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</span>
+     <br /> 
+     <table border="0" class="ding-list" cellpadding="1"> 
+      <tbody>
+       <tr> 
+        <th width="160" align="center">菜名</th> 
+        <th width="80" align="center">数量</th> 
+        <th width="80" align="center">单价</th>
+       </tr> 
+       <tr> 
+        <td>11</td> 
+        <td>12</td> 
+        <td>13</td> 
+       </tr> 
+       <tr> 
+        <td>11</td> 
+        <td>12</td> 
+        <td>13</td> 
+       </tr> 
+       <tr> 
+        <td>11</td> 
+        <td>12</td> 
+        <td>13</td> 
+       </tr> 
+       <tr> 
+        <td>11</td> 
+        <td>12</td> 
+        <td>13</td> 
+       </tr> 
+       <tr> 
+        <td>11</td> 
+        <td>12</td> 
+        <td>13</td> 
+       </tr> 
+      </tbody>
+     </table> 
+     <p>总价:<a id="totlmo"></a></p> 
+     <input style="background:#4cff00;border:0;width:100px;height:40px;" type="submit" value="提交" /> 
+    </div> 
+   </div> 
+  </div> 
+  <!--遮罩结束--> 
+  <!--<script type="text/javascript">     
+      $(function () {
+          $("#pX").click(function () {
+              $("#mask").hide();
+          });
+      })
+	</script>--> 
+  <!--菜品详情结束--> 
+  <!--==============================footer=================================--> 
+  <footer> 
+   <div class="main"> 
+    <div class="aligncenter"> 
+     <span>Catering.com &copy; 2012</span> Website Template Collect from 
+  
+    </div> 
+   </div> 
+  </footer>   
+ </body>
+</html>

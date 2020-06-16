@@ -52,5 +52,35 @@ public class UserDao
             msg = "注册失败";
     }
 
+    public bool lookMenu(out List<restDataStruct_Menu> me,string lei) {
+
+        List<restDataStruct_Menu> m = new List<restDataStruct_Menu>();
+        //m.Clear();
+        OleDbServerConnTest conn = new OleDbServerConnTest();
+        string sql = string.Format("select Cid,Cname,Cjia,Cpin,Cimg from [caipin] where Clei='{0}'",lei);
+        DataTable table = conn.DataReaderToDataTable(sql);
+
+        for (int i = 0; i < table.Rows.Count; ++i)
+        {
+            restDataStruct_Menu _Menu = new restDataStruct_Menu()
+            {
+                Cid = table.Rows[i]["Cid"].ToString(),
+                Name = table.Rows[i]["Cname"].ToString(),
+                Price = table.Rows[i]["Cjia"].ToString(),
+                Info = table.Rows[i]["Cpin"].ToString(),
+                Img = table.Rows[i]["Cimg"].ToString(),
+                Type_ = lei
+            };
+            m.Add(_Menu);
+
+        }
+        me = m;
+
+        if (me.Count > 0)
+            return true;
+
+        return true;
+    }
+
 
 }

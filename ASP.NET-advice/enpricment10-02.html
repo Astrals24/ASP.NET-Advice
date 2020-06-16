@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    
+    <script src="js/jquery-1.10.2.js"></script>
+    <link href="css/jquery-ui-1.10.4.css" rel="stylesheet" />
+    <script src="jquery-ui-1.10.4/js/jquery-ui-1.10.4.js"></script>
+    <style>
+        h1 {
+            padding: .2em;
+            margin: 0;
+        }
+
+        #products {
+            float: left;
+            width: 500px;
+            margin-right: 2em;
+        }
+
+        #menu {
+            float: left;
+            width: 200px;
+            margin-left: 1em;
+        }
+
+        #menu ol {
+                margin: 0;
+                padding: 1em 0 1em 3em;
+        }
+
+        #price{
+            float:left;
+            width:200px;
+            margin-left:1em;
+        }
+
+        #price ul{
+            margin:0;
+            padding:1em 0 1em 3em;
+
+        }
+
+        #total{
+            float:left;
+            width:200px;
+            margin-left:1em;         
+        }
+
+        #total ul{
+            margin:0;
+            padding:1em 0 1em 3em;
+        }
+    </style>
+    <script>
+        $(function () {
+            var price = $("#price .ui-widget-content ul");
+            var total = $("#total .ui-widget-content ul");
+            var sum = 0;
+           
+            var myshopping = new price_fun();
+            initPrice(myshopping);
+            console.log(myshopping);
+            $("#catalog").accordion();
+            $("#catalog li").draggable({
+                appendTo: "body",
+                helper: "clone"
+            });
+
+            $("#menu ol").droppable({
+                accept:":not(.ui-sortable-helper)",
+                drop: function (event, ui) {
+                    $(this).find(".placeholder").remove();
+                    $("<li></li>").text(ui.draggable.text()).appendTo(this);
+                    price.find(".placeholder").remove();
+                    total.html("");
+                    var single = myshopping.Get(ui.draggable.text());
+                    $("<li></li>").text("￥" + single.toFixed(2)).appendTo(price);
+                    sum += single;
+                    $("<li></li>").text("￥" + sum).appendTo(total);
+                    $("<li></li>").text("*欢迎下次光临*").appendTo(total);
+                }
+            });
+        });
+
+        function initPrice(shopping) {
+            shopping.Add("古典式烧烤牛仔肋排", 29.0);
+            shopping.Add("葡式炭烧猪颈肉", 34.5);
+            shopping.Add("咖喱鸡排", 33.0);
+            shopping.Add("芒果布丁", 28.0);
+            shopping.Add("苹果蛋奶酥", 15.4);
+            shopping.Add("水果沙拉", 32.5);
+            shopping.Add("西西里海鲜比萨", 27.9);
+            shopping.Add("威尼斯吞拿鱼比萨", 34.8);
+            shopping.Add("线下杂菜比萨", 45.6);
+
+        }
+
+        function price_fun() {
+            this.data = new Array();
+            this.Add = function (key, value) {
+                this.data[key] = value
+            };
+            this.Get = function (key) {
+                return this.data[key];
+            };
+            this.Remove = function (key) {
+                this.data[key] = null;
+            };
+        }
+
+    </script>
+
+</head>
+
+<body bgcolor="#ccffff">
+    <div id="products">
+        <h1 class="ui-widget-header">产品列表</h1>
+        <div id="catalog">
+            <h2><a href="#">肉排类</a></h2>
+            <div>
+                <ul>
+                    <li>古典式烧烤牛仔肋排</li>
+                    <li>葡式炭烧猪颈肉</li>
+                    <li>咖喱鸡排</li>
+                </ul>
+            </div>
+            <h2><a href="#">水果类</a></h2>
+            <div>
+                <ul>
+                    <li>芒果布丁</li>
+                    <li>苹果蛋奶酥</li>
+                    <li>水果沙拉</li>
+                </ul>
+            </div>
+            <h2><a href="#">比萨</a></h2>
+            <div>
+                <ul>
+                    <li>西西里海鲜比萨</li>
+                    <li>威尼斯吞拿鱼比萨</li>
+                    <li>线下杂菜比萨</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="menu">
+        <h1 class="ui-widget-header">点餐</h1>
+        <div class="ui-widget-content">
+            <ol>
+                <li class="placeholder">添加餐品到已点餐</li>
+            </ol>
+        </div>
+    </div>
+    <div id="price">
+        <h1 class="ui-widget-header">单价</h1>
+        <div class="ui-widget-content">
+            <ul>
+                <li class="placeholder">添加餐品到已点餐</li>
+            </ul>
+        </div>
+    </div>
+    <div id="total">
+        <h1 class="ui-widget-header"> 总价</h1>
+        <div class="ui-widget-content">
+            <ul>
+                <li class="placeholder">添加餐品到已点餐</li>
+            </ul>
+        </div>
+    </div>
+
+
+</body>
+</html>

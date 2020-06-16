@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <link href="" rel="stylesheet" />
+    <style>
+        #flower {
+            height:600px;
+            background:url('images/甜品1.jpg') repeat-x scroll 0 0;
+            width:100%;
+        }
+
+        #gallery{
+            width:800px;
+            height:200px;
+            margin:0 auto;
+            padding:10px;
+            background:#383131;
+        }
+
+        ul{
+            list-style-type:none;
+            position:absolute;
+
+        }
+
+        #gallery ul li{
+           float:left;
+           margin:10px;
+           background:white;
+           height:100px;
+           width:120px;
+        }
+
+        #gallery ul li img{
+            height:100px;       
+            width: 120px;
+        }
+
+        #gallery ul li:hover {
+           border:3px solid white;
+           margin:7px;
+           cursor:pointer;
+        }
+    </style>
+
+    <script>
+        var speed = 50;
+        var step = 2;
+        var current = 0;
+        var imageWidth = 2300;
+        var boxWidth = 800;
+        var restartPos = imageWidth - boxWidth;
+
+        function scrollImg() {
+            current -= step;
+            if (current == restartPos)
+                current = 0;
+            $("#flower").css("background-position", current + "px 0");
+        }
+        setInterval(scrollImg, speed);
+
+        $(function () {
+
+            $("ul li img").click(function () {
+                var s = this.src;
+                console.log(s);
+                $("#flower").css("background", "url('" + s + "') repeat-x scroll 0 0");
+                //setInterval(scrollImg, speed);
+            });     
+
+        })
+
+    </script>
+</head>
+<body>
+    <div id="flower"></div>
+    <div id="gallery">
+        <ul>
+            <li><img src="images/罗宋汤1.jpg" /></li>
+            <li><img src="images/沙拉1.jpg" /></li>
+            <li><img src="images/牛排1.jpg" /></li>
+            <li><img src="images/甜品1.jpg" /></li>
+            <li><img src="images/披萨1.jpg" /></li>
+        </ul>
+
+    </div>
+</body>
+</html>
